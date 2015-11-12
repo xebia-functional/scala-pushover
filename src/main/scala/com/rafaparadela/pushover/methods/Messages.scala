@@ -29,9 +29,6 @@ class Messages(httpClient: HttpClient, apiToken: String) {
         timestamp.map(x => Map("timestamp" -> x)).getOrElse(Map.empty) ++
         sound.map(x => Map("sound" -> x.toString)).getOrElse(Map.empty)
 
-
-    println(data)
-
     val responseDict = httpClient.post("messages.json", data)
 
     MessagePostResponse(
