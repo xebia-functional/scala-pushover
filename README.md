@@ -30,12 +30,11 @@ val p = new PushoverClient(<YOUR_API_TOKEN>)
 You can then use Pushove API methods:
 
 ```scala
-p.messages.post(<USER_KEY>, "Hello World!")
+p.messages.post(user = <USER_KEY>, message = "Hello World!")
 ```
 
 This particular method requires those parameters:
 
-- `token` (required) - your application's API token
 - `user` (required) - the user/group key (not e-mail address) of your user (or you), viewable when logged into our dashboard (often referred to as `USER_KEY` in our documentation and code examples)
 - `message` (required) - your message
 
