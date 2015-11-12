@@ -11,11 +11,11 @@ is subject to frequent change._
 
 ## Download
 
-scala-slack is listed on Maven Central and can be included in your project by adding this line to your build.sbt:
+scala-pushover is listed on Maven Central and can be included in your project by adding this line to your build.sbt:
 ```
 libraryDependencies += "com.rafaparadela" %% "scala-pushover" % "0.1"
 ```
-scala-slack supports Scala 2.10 and 2.11.
+scala-pushover supports Scala 2.10 and 2.11.
 
 ## Usage
 
