@@ -1,4 +1,4 @@
-package com.rafaparadela.pushover
+package com.fortysevendeg.pushover
 
 object Exceptions {
 

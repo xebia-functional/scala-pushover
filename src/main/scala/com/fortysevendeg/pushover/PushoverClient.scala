@@ -1,6 +1,6 @@
-package com.rafaparadela.pushover
+package com.fortysevendeg.pushover
 
-import com.rafaparadela.pushover.methods.Messages
+import com.fortysevendeg.pushover.methods.Messages
 
 
 class PushoverClient(private val apiToken: String) {

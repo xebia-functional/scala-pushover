@@ -1,9 +1,7 @@
-package com.rafaparadela.pushover.methods
+package com.fortysevendeg.pushover.methods
 
-import com.rafaparadela.pushover.HttpClient
-import com.rafaparadela.pushover.Responses._
-import com.rafaparadela.pushover.Priorities
-import com.rafaparadela.pushover.Sounds
+import com.fortysevendeg.pushover._
+import Responses._
 
 class Messages(httpClient: HttpClient, apiToken: String) {
 

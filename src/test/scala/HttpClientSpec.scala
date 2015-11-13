@@ -1,5 +1,5 @@
-import com.rafaparadela.pushover.Exceptions._
-import com.rafaparadela.pushover.HttpClient
+import com.fortysevendeg.pushover.{HttpClient, Exceptions}
+import Exceptions._
 import org.scalatest._
 import play.api.libs.json.Json
 

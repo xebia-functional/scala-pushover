@@ -1,6 +1,6 @@
 name := "pushover"
 
-organization := "com.rafaparadela"
+organization := "com.fortysevendeg"
 
 version := "0.1"
 

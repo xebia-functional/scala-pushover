@@ -1,4 +1,4 @@
-package com.rafaparadela.pushover
+package com.fortysevendeg.pushover
 
 import play.api.libs.json.{Json, JsValue}
 import scalaj.http.{Http, HttpOptions}

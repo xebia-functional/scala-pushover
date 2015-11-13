@@ -1,5 +1,5 @@
-import com.rafaparadela.pushover.HttpClient
-import com.rafaparadela.pushover.methods.Messages
+import com.fortysevendeg.pushover.HttpClient
+import com.fortysevendeg.pushover.methods.Messages
 import org.scalatest._
 import org.mockito.Mockito._
 import org.scalatest.mock.MockitoSugar
