@@ -1,5 +1,4 @@
-import com.fortysevendeg.pushover.{HttpClient, Exceptions}
-import Exceptions._
+import com.fortysevendeg.pushover.HttpClient
 import org.scalatest._
 import play.api.libs.json.Json
 

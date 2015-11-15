@@ -17,7 +17,7 @@ class Messages(httpClient: HttpClient, apiToken: String) {
       sound: Option[Sounds.Value] = None,
       html: Option[HtmlFormat.Value] = Option(HtmlFormat.On),
       retry: Option[Int] = None,
-      expire: Option[Int] = None): MessagePostResponse = {
+      expire: Option[Int] = None): SendMessageResponse = {
 
     val requiredParams = Map("token" -> apiToken, "user" -> user, "message" -> message)
 
@@ -35,10 +35,43 @@ class Messages(httpClient: HttpClient, apiToken: String) {
 
     val responseDict = httpClient.post("messages.json", data)
 
-    MessagePostResponse(
+    SendMessageResponse(
       (responseDict \ "status").as[Int],
       (responseDict \ "request").as[String],
-      (responseDict \ "errors").asOpt[Seq[String]]
-    )
+      (responseDict \ "errors").asOpt[Seq[String]],
+      (responseDict \ "receipt").asOpt[String])
   }
+
+
+  def receipts(receipt: String): ReceiptsMessageResponse = {
+
+    val responseDict = httpClient.get(s"receipts/$receipt.json", Map("token" -> apiToken))
+
+    ReceiptsMessageResponse(
+      (responseDict \ "status").as[Int],
+      (responseDict \ "request").as[String],
+      (responseDict \ "errors").asOpt[Seq[String]],
+      (responseDict \ "acknowledged").asOpt[Int],
+      (responseDict \ "acknowledged_at").asOpt[Int],
+      (responseDict \ "acknowledged_by").asOpt[String],
+      (responseDict \ "acknowledged_by_device").asOpt[String],
+      (responseDict \ "last_delivered_at").asOpt[Int],
+      (responseDict \ "expired").asOpt[Int],
+      (responseDict \ "expires_at").asOpt[Int],
+      (responseDict \ "called_back").asOpt[Int],
+      (responseDict \ "called_back_at").asOpt[Int])
+
+  }
+
+
+  def cancel(receipt: String): CancelMessageResponse = {
+
+    val responseDict = httpClient.post(s"receipts/$receipt/cancel.json", Map("token" -> apiToken))
+
+    CancelMessageResponse(
+      (responseDict \ "status").as[Int],
+      (responseDict \ "request").as[String],
+      (responseDict \ "errors").asOpt[Seq[String]])
+  }
+
 }
