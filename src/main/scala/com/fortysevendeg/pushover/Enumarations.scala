@@ -33,3 +33,8 @@ object Sounds extends Enumeration {
   val None = Value("none")
 }
 
+object HtmlFormat extends Enumeration {
+  val Off = Value(0)
+  val On = Value(1)
+}
+

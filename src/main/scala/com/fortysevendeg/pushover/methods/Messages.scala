@@ -14,7 +14,8 @@ class Messages(httpClient: HttpClient, apiToken: String) {
       url_title: Option[String] = None,
       priority: Option[Priorities.Value] = None,
       timestamp: Option[String] = None,
-      sound: Option[Sounds.Value] = None): MessagePostResponse = {
+      sound: Option[Sounds.Value] = None,
+      html: Option[HtmlFormat.Value] = Option(HtmlFormat.On)): MessagePostResponse = {
 
     val requiredParams = Map("token" -> apiToken, "user" -> user, "message" -> message)
 
@@ -25,7 +26,8 @@ class Messages(httpClient: HttpClient, apiToken: String) {
         url_title.map(x => Map("url_title" -> x)).getOrElse(Map.empty) ++
         priority.map(x => Map("priority" -> x.id.toString)).getOrElse(Map.empty) ++
         timestamp.map(x => Map("timestamp" -> x)).getOrElse(Map.empty) ++
-        sound.map(x => Map("sound" -> x.toString)).getOrElse(Map.empty)
+        sound.map(x => Map("sound" -> x.toString)).getOrElse(Map.empty) ++
+        html.map(x => Map("html" -> x.id.toString)).getOrElse(Map.empty)
 
     val responseDict = httpClient.post("messages.json", data)
 
