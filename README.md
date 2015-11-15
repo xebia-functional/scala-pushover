@@ -44,10 +44,10 @@ Some optional parameters may be included:
 - `title` - your message's title, otherwise your app's name is used
 - `url` - a supplementary URL to show with your message
 - `url_title` - a title for your supplementary URL, otherwise just the URL is shown
-- `priority` - send as -2 to generate no notification/alert, -1 to always send as a quiet notification, 1 to display as high-priority and bypass the user's quiet hours, or 2 to also require confirmation from the user
 - `timestamp` - a Unix timestamp of your message's date and time to display to the user, rather than the time your message is received by our API
 - `sound` - the name of one of the sounds supported by device clients to override the user's default sound choice
 - `html` - to enable HTML formatting, include an html parameter set to 1. The normal message content in your message parameter will then be displayed as HTML. (Default value: 1)
+- `priority` - send as -2 to generate no notification/alert, -1 to always send as a quiet notification, 1 to display as high-priority and bypass the user's quiet hours, or 2 to also require confirmation from the user (To send an emergency-priority notification, the priority parameter must be set to 2 and the retry and expire parameters must be supplied.)
 
 When sending notifications through the Pushover API, the sound parameter may be set to one of the following:
 
