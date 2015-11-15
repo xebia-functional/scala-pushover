@@ -15,7 +15,9 @@ class Messages(httpClient: HttpClient, apiToken: String) {
       priority: Option[Priorities.Value] = None,
       timestamp: Option[String] = None,
       sound: Option[Sounds.Value] = None,
-      html: Option[HtmlFormat.Value] = Option(HtmlFormat.On)): MessagePostResponse = {
+      html: Option[HtmlFormat.Value] = Option(HtmlFormat.On),
+      retry: Option[Int] = None,
+      expire: Option[Int] = None): MessagePostResponse = {
 
     val requiredParams = Map("token" -> apiToken, "user" -> user, "message" -> message)
 
@@ -27,12 +29,16 @@ class Messages(httpClient: HttpClient, apiToken: String) {
         priority.map(x => Map("priority" -> x.id.toString)).getOrElse(Map.empty) ++
         timestamp.map(x => Map("timestamp" -> x)).getOrElse(Map.empty) ++
         sound.map(x => Map("sound" -> x.toString)).getOrElse(Map.empty) ++
-        html.map(x => Map("html" -> x.id.toString)).getOrElse(Map.empty)
+        html.map(x => Map("html" -> x.id.toString)).getOrElse(Map.empty) ++
+        retry.map(x => Map("retry" -> x.toString)).getOrElse(Map.empty) ++
+        expire.map(x => Map("expire" -> x.toString)).getOrElse(Map.empty)
 
     val responseDict = httpClient.post("messages.json", data)
 
     MessagePostResponse(
       (responseDict \ "status").as[Int],
-      (responseDict \ "request").as[String])
+      (responseDict \ "request").as[String],
+      (responseDict \ "errors").asOpt[Seq[String]]
+    )
   }
 }
